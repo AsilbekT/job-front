@@ -1,4 +1,5 @@
 import { memo, useCallback, useContext, useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 import { useFetch } from "../../../../../hooks/useFetch";
 import { UserContext, dispatchRefetchUserEvent } from "../../../../../pages/context/UserContext";
 import { fetchWithAuth } from "../../../../../utils/fetch.util";
@@ -35,19 +36,18 @@ const Resumes = () => {
     }
   }, [userResumes]);
 
-  const cvManagerHandler = async (e) => {
+  const cvManagerHandler = async (acceptedFiles) => {
     try {
       setLoading(true);
-      const data = Array.from(e.target.files);
-      const [selectedFile] = data;
+      const [selectedFile] = acceptedFiles;
 
       if (!selectedFile) {
         setError('No file is selected, please select at least one file');
         return;
       }
 
-      if (checkFileTypes(data)) {
-        setManager(getManager.concat(data));
+      if (checkFileTypes(acceptedFiles)) {
+        setManager(getManager.concat(acceptedFiles));
         setError("");
       } else {
         setError("Only accept  (.doc, .docx, .pdf) file");
@@ -100,6 +100,8 @@ const Resumes = () => {
     setTitle('');
   }, []);
 
+  const { getRootProps, getInputProps } = useDropzone({ onDrop: cvManagerHandler });
+
   const resumeEls = userResumes.map((resume) => {
     return (
       <div key={resume.id} className="d-flex align-items-center gap-3">
@@ -130,7 +132,7 @@ const Resumes = () => {
                 />
               </div>
               <div className="form-group col-lg-6 col-md-12">
-                <div className="uploading-resume">
+                <div className="uploading-resume" {...getRootProps()}>
                   <div className="uploadButton">
                     <input
                       className="uploadButton-input"
@@ -139,7 +141,7 @@ const Resumes = () => {
                       placeholder="resume title"
                       accept="application/msword,application/pdf"
                       id="upload"
-                      onChange={cvManagerHandler}
+                      {...getInputProps()}
                     />
                     <label className="cv-uploadButton" htmlFor="upload">
                       <span className="title">Drop files here to upload</span>

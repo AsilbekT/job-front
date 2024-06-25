@@ -41,13 +41,13 @@ module.exports = [
   //   routePath: "/candidate/short-listed-jobs",
   //   active: "",
   // },
-  // {
-  //   id: 7,
-  //   name: "My Resume",
-  //   icon: "la la-file-invoice",
-  //   routePath: "/candidate/cv-manager",
-  //   active: "",
-  // },
+  {
+    id: 7,
+    name: 'Resume Manager',
+    icon: 'la la-file-invoice',
+    routePath: '/candidate/resume-manager',
+    active: '',
+  },
   // {
   //   id: 8,
   //   name: "Packages",

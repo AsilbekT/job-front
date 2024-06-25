@@ -1,4 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
+import { useDropzone } from "react-dropzone";
 import { useFetch } from "../../../../../hooks/useFetch";
 import { UserContext } from "../../../../../pages/context/UserContext";
 import { fetchWithAuth } from "../../../../../utils/fetch.util";
@@ -25,25 +26,10 @@ const CvUploader = () => {
     const [loading, setLoading] = useState(false);
     const resumesFetch = useFetch();
 
-    useEffect(() => {
-        resumesFetch.makeRequest('/resumes/');
-    }, []);
-
-    const userResumes = useMemo(() => {
-        return resumesFetch.data?.filter((resume) => resume.user === user?.id) || [];
-    }, [resumesFetch.data, user?.id]);
-
-    useEffect(() => {
-        if (userResumes.length) {
-            setManager(userResumes.map(({ title }) => ({ name: title })));
-        }
-    }, [userResumes]);
-
-    const cvManagerHandler = async (e) => {
+    const cvManagerHandler = async (acceptedFiles) => {
         try {
             setLoading(true);
-            const data = Array.from(e.target.files);
-            const [selectedFile] = data;
+            const [selectedFile] = acceptedFiles;
 
             if (!selectedFile) {
                 setError('No file is selected, please select at least one file');
@@ -51,11 +37,11 @@ const CvUploader = () => {
             }
 
             const isExist = getManager?.some((file1) =>
-                data.some((file2) => file1.name === file2.name)
+                acceptedFiles.some((file2) => file1.name === file2.name)
             );
             if (!isExist) {
-                if (checkFileTypes(data)) {
-                    setManager(getManager.concat(data));
+                if (checkFileTypes(acceptedFiles)) {
+                    setManager(getManager.concat(acceptedFiles));
                     setError("");
                 } else {
                     setError("Only accept  (.doc, .docx, .pdf) file");
@@ -88,6 +74,22 @@ const CvUploader = () => {
         }
     };
 
+    const { getRootProps, getInputProps } = useDropzone({ onDrop: cvManagerHandler });
+
+    useEffect(() => {
+        resumesFetch.makeRequest('/resumes/');
+    }, []);
+
+    const userResumes = useMemo(() => {
+        return resumesFetch.data?.filter((resume) => resume.user === user?.id) || [];
+    }, [resumesFetch.data, user?.id]);
+
+    useEffect(() => {
+        if (userResumes.length) {
+            setManager(userResumes.map(({ title }) => ({ name: title })));
+        }
+    }, [userResumes]);
+
     // delete image
     const deleteHandler = async (fileName) => {
         try {
@@ -117,7 +119,7 @@ const CvUploader = () => {
     return (
         <>
             {/* Start Upload resule */}
-            <div className="uploading-resume">
+            <div className="uploading-resume" {...getRootProps()}>
                 <div className="uploadButton">
                     <input
                         className="uploadButton-input"
@@ -125,7 +127,7 @@ const CvUploader = () => {
                         name="attachments[]"
                         accept="application/msword,application/pdf"
                         id="upload"
-                        onChange={cvManagerHandler}
+                        {...getInputProps()}
                     />
                     <label className="cv-uploadButton" htmlFor="upload">
                         <span className="title">Drop files here to upload</span>
