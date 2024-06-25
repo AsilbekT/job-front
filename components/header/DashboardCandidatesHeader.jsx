@@ -122,7 +122,7 @@ const DashboardCandidatesHeader = () => {
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                         >
-                                            <Image
+                                            <img
                                                 alt="avatar"
                                                 className="thumb"
                                                 src={user.avatar}
