@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 const ImgBox = () => {
   const imgContent = [
@@ -27,7 +26,7 @@ const ImgBox = () => {
           <div className="column col-lg-3 col-md-6 col-sm-6" key={item.id}>
             {item.block.map((itemImg, i) => (
               <figure className="image" key={i}>
-                <Image
+                <img
                   src={`/images/resource/${itemImg.img}.jpg`}
                   alt="about image"
                   width={300}

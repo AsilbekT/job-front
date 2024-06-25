@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useContext, useEffect, useState } from "react";
@@ -71,7 +70,7 @@ const DashboardHeader = () => {
                             <div className="logo-box">
                                 <div className="logo">
                                     <Link href="/">
-                                        <Image
+                                        <img
                                             alt="brand"
                                             src="/images/logo.svg"
                                             width={154}
@@ -107,7 +106,7 @@ const DashboardHeader = () => {
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
-                                    <Image
+                                    <img
                                         alt="avatar"
                                         className="thumb"
                                         src={user?.avatar}

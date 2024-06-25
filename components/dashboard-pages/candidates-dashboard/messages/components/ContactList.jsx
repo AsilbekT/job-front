@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 const ChatboxContactList = () => {
   return (
@@ -7,7 +6,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-1.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -29,7 +28,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-2.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -53,7 +52,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-3.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -77,7 +76,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-4.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -99,7 +98,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-5.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -123,7 +122,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-6.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -145,7 +144,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-7.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"
@@ -167,7 +166,7 @@ const ChatboxContactList = () => {
         <a href="#">
           <div className="d-flex bd-highlight">
             <div className="img_cont">
-              <Image
+              <img
                 src="/images/resource/candidate-8.png"
                 className="rounded-circle user_img"
                 alt="chatbox avatar"

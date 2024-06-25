@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
-import Seo from "../../../components/common/Seo";
-import MyResume from "../../../components/dashboard-pages/candidates-dashboard/my-resume";
-import { MyResumeContextProvider } from "../../../contexts/MyResumeContext";
+import dynamic from 'next/dynamic';
+import Seo from '../../../components/common/Seo';
+import MyResume from '../../../components/dashboard-pages/candidates-dashboard/my-resume';
+import { MyResumeContextProvider } from '../../../contexts/MyResumeContext';
 
 const index = () => {
   return (

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from 'react';
 
@@ -83,7 +82,7 @@ const DashboardCandidatesHeader = () => {
                             <div className="logo-box">
                                 <div className="logo">
                                     <Link href="/">
-                                        <Image
+                                        <img
                                             alt="brand"
                                             src="/images/logo.svg"
                                             width={154}

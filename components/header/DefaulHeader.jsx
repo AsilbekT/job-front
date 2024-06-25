@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../pages/context/UserContext";
@@ -56,7 +55,7 @@ const DefaulHeader = () => {
                       ? "/employer/company-profile"
                       : '/candidate/my-profile'
                   }>
-                    <Image
+                    <img
                       alt="avatar"
                       className="thumb mx-2 d-inline-block"
                       src={user.avatar}
