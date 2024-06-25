@@ -12,7 +12,7 @@ const Candidates2 = () => {
           <div className="inner-box">
             <div className="content-box">
               <figure className="image">
-                <img src={candidate.avatar || '/images/User-avatar.svg.png'} alt="avatar" />
+                <img src={candidate.avatar} alt="avatar" />
               </figure>
               <h4 className="name">{candidate.name}</h4>
               <span className="designation">{candidate.designation}</span>

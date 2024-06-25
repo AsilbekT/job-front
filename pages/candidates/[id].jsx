@@ -1,15 +1,15 @@
+import dayjs from "dayjs";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useCallback, useEffect } from "react";
+import { NotFoundPage } from "../../components/common/NotFountPage";
+import Seo from "../../components/common/Seo";
 import LoginPopup from "../../components/common/form/login/LoginPopup";
 import FooterDefault from "../../components/footer/common-footer";
 import DefaulHeader from "../../components/header/DefaulHeader";
 import MobileMenu from "../../components/header/MobileMenu";
-import { useRouter } from "next/router";
-import { useCallback, useEffect } from "react";
-import Seo from "../../components/common/Seo";
-import { useFetch } from "../../hooks/useFetch";
-import { NotFoundPage } from "../../components/common/NotFountPage";
-import dayjs from "dayjs";
 import { jobTypesMap } from "../../data/job-types";
+import { useFetch } from "../../hooks/useFetch";
 
 const CandidateSingleDynamicV1 = () => {
   const router = useRouter();
@@ -182,7 +182,7 @@ const CandidateSingleDynamicV1 = () => {
                 <div className="content">
                   <figure className="image">
                     <img
-                      src={user?.avatar || '/images/User-avatar.svg.png'}
+                      src={user?.avatar}
                       alt="avatar"
                       style={{ objectFit: 'cover', height: '100%' }}
                     />

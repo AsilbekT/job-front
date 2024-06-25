@@ -1,9 +1,9 @@
+import cookie from 'js-cookie';
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
-import cookie from 'js-cookie';
 import fetchFromApi from '../../pages/api/api';
-import Image from "next/image";
+import HeaderNavContent from "./HeaderNavContent";
 
 const DefaulHeader2 = () => {
   const [navbar, setNavbar] = useState(false);
@@ -65,7 +65,7 @@ const DefaulHeader2 = () => {
               <Image
                 alt="avatar"
                 className="thumb"
-                src={user.avatar || "/images/resource/company-6.png"}
+                src={user.avatar}
                 width={50}
                 style={{ objectFit: 'cover' }}
                 height={50}

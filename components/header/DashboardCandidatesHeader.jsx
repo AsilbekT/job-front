@@ -1,17 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import candidatesMenuData from "../../data/candidatesMenuData";
-import HeaderNavContent from "./HeaderNavContent";
-import { isActiveLink } from "../../utils/linkActiveChecker";
-import { useRouter } from "next/router";
-import { UserContext } from '../../pages/context/UserContext';
-import { useCallback } from "react";
-import Modal from "../Modal";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+import candidatesMenuData from "../../data/candidatesMenuData";
 import { useFetch } from "../../hooks/useFetch";
-import { getDefaultImage } from "../dashboard-pages/candidates-dashboard/my-profile/components/my-profile/LogoUpload";
+import { UserContext } from '../../pages/context/UserContext';
+import { isActiveLink } from "../../utils/linkActiveChecker";
+import Modal from "../Modal";
+import HeaderNavContent from "./HeaderNavContent";
 
 const DashboardCandidatesHeader = () => {
     const user = useContext(UserContext);
@@ -126,7 +125,7 @@ const DashboardCandidatesHeader = () => {
                                             <Image
                                                 alt="avatar"
                                                 className="thumb"
-                                                src={getDefaultImage(user.avatar)}
+                                                src={user.avatar}
                                                 width={50}
                                                 style={{ objectFit: 'cover' }}
                                                 height={50}

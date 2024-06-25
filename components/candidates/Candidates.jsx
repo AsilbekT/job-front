@@ -44,7 +44,7 @@ const Candidates = () => {
           <div className="candidate-block" key={candidate.id}>
             <div className="inner-box">
               <figure className="image">
-                <img src={candidate.avatar || '/images/User-avatar.svg.png'} alt="avatar" />
+                <img src={candidate.avatar} alt="avatar" />
               </figure>
               <h4 className="name">{candidate.name}</h4>
               <span className="designation">{candidate.designation}</span>

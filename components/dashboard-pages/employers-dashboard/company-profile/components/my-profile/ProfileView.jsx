@@ -1,6 +1,5 @@
 import { memo, useContext } from "react";
 import { UserContext } from "../../../../../../pages/context/UserContext";
-import { getDefaultImage } from "../../../../candidates-dashboard/my-profile/components/my-profile/LogoUpload";
 
 export const ProfileView = memo(({ form, companyLogo, company }) => {
   const userImg = useContext(UserContext)?.avatar;
@@ -15,7 +14,7 @@ export const ProfileView = memo(({ form, companyLogo, company }) => {
                 <div className="uploadButton">
                   <figure className="image-overlay">
                     <img
-                      src={company?.company_logo || '/images/User-avatar.svg.png'}
+                      src={company?.company_logo}
                       alt="User Avatart"
                       width="100%"
                       height="100%"
@@ -30,7 +29,7 @@ export const ProfileView = memo(({ form, companyLogo, company }) => {
                 <div className="uploadButton">
                   <figure className="image-overlay">
                     <img
-                      src={getDefaultImage(userImg)}
+                      src={userImg}
                       alt="User Avatart"
                       width="100%"
                       height="100%"

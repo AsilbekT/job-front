@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
 import { UserContext } from "../../pages/context/UserContext";
-import Image from "next/image";
+import HeaderNavContent from "./HeaderNavContent";
 
 const DefaulHeader = () => {
   const [navbar, setNavbar] = useState(false);
@@ -52,14 +52,14 @@ const DefaulHeader = () => {
               ? (
                 <>
                   <Link href={
-                    user?.is_employer 
-                      ? "/employer/company-profile" 
+                    user?.is_employer
+                      ? "/employer/company-profile"
                       : '/candidate/my-profile'
                   }>
                     <Image
                       alt="avatar"
                       className="thumb mx-2 d-inline-block"
-                      src={user.avatar || "/images/resource/company-6.png"}
+                      src={user.avatar}
                       style={{ objectFit: 'cover' }}
                       width={50}
                       height={50}

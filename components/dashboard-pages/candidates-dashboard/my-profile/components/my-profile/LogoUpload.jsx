@@ -49,7 +49,7 @@ const LogoUpload = ({ title = 'Profile Image', }) => {
             <label className="uploadButton" tabIndex={0}>
                 <figure className="image-overlay">
                     <img
-                        src={getDefaultImage(imageUrl || user?.avatar)}
+                        src={imageUrl || user?.avatar}
                         alt="User Avatart"
                         width="100%"
                         height="100%"

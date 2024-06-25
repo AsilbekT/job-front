@@ -8,7 +8,6 @@ import { useFetch } from "../../hooks/useFetch";
 import { UserContext } from "../../pages/context/UserContext";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import Modal from "../Modal";
-import { getDefaultImage } from '../dashboard-pages/candidates-dashboard/my-profile/components/my-profile/LogoUpload';
 import HeaderNavContent from "./HeaderNavContent";
 
 const DashboardHeader = () => {
@@ -111,7 +110,7 @@ const DashboardHeader = () => {
                                     <Image
                                         alt="avatar"
                                         className="thumb"
-                                        src={getDefaultImage(user?.avatar)}
+                                        src={user?.avatar}
                                         width={50}
                                         style={{ objectFit: 'cover' }}
                                         height={50}
