@@ -1,5 +1,4 @@
 import cookie from 'js-cookie';
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import fetchFromApi from '../../pages/api/api';
@@ -62,7 +61,7 @@ const DefaulHeader2 = () => {
         <div className="outer-box">
           {user && (
             <Link href={user?.is_employer ? '/employer/dashboard' : "/candidate/my-resume"} className="my-profile">
-              <Image
+              <img
                 alt="avatar"
                 className="thumb"
                 src={user.avatar}
