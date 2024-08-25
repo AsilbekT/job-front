@@ -1,14 +1,13 @@
-import Link from "next/link";
-import employerMenuData from "../../data/employerMenuData";
-import { isActiveLink } from "../../utils/linkActiveChecker";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { menuToggle } from "../../features/toggle/toggleSlice";
-import { useCallback, useContext, useState } from "react";
-import { UserContext } from "../../pages/context/UserContext";
-import { useEffect } from "react";
-import { useFetch } from "../../hooks/useFetch";
 import Cookies from "js-cookie";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import employerMenuData from "../../data/employerMenuData";
+import { menuToggle } from "../../features/toggle/toggleSlice";
+import { useFetch } from "../../hooks/useFetch";
+import { UserContext } from "../../pages/context/UserContext";
+import { isActiveLink } from "../../utils/linkActiveChecker";
 import Modal from "../Modal";
 
 const DashboardEmployerSidebar = () => {
@@ -24,7 +23,7 @@ const DashboardEmployerSidebar = () => {
 
     useEffect(() => {
         if (user && !user.is_employer) {
-            router.replace('/candidate/my-profile');
+            router.replace('/candidate/profile');
         }
     }, [user]);
 
@@ -33,7 +32,7 @@ const DashboardEmployerSidebar = () => {
 
     const onLogOut = useCallback(async () => {
         Cookies.remove('token');
-        await router.replace('/login');
+        await router.replace('/');
         window.location.reload();
     }, [router]);
 

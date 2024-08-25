@@ -1,11 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
 import LoginPopup from "../../../common/form/login/LoginPopup";
+import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import CvUploader from "./components/CvUploader";
-import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
+import CvUploader from "./components/CvUploader";
 
 const index = () => {
   return (
@@ -28,7 +28,7 @@ const index = () => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Resume Manager!" />
+          <BreadCrumb title="Resume Manager" />
           {/* breadCrumb */}
 
           <MenuToggler />

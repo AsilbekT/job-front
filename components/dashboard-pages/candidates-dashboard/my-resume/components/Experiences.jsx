@@ -53,7 +53,7 @@ const Experiences = () => {
       {activeFieldEditing.activeField === FIELD_KEY && (
         <Modal
           primaryAction={saveFieldItem}
-          title="Add / Edit Experience"
+          title="Experience"
           onClose={closeEditing}
         >
           <div className="row">

@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { useMyResumeContext } from "../../../../../contexts/MyResumeContext";
 import Modal from "../../../../Modal";
-import { useCallback } from "react";
 
 const FIELD_KEY = 'education';
 
@@ -53,7 +52,7 @@ const Education = () => {
     <>
       {activeFieldEditing.activeField === FIELD_KEY && (
         <Modal
-          title="Add / Edit Education"
+          title="Education"
           onClose={closeEditing}
           primaryAction={saveFieldItem}
         >

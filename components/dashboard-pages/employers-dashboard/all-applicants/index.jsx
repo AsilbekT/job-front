@@ -1,13 +1,13 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
+import { useState } from "react";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
+import MenuToggler from "../../MenuToggler";
 import WidgetContentBox from "./components/WidgetContentBox";
 import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
-import MenuToggler from "../../MenuToggler";
-import { useState } from "react";
 
 const index = () => {
   const [dateFilter, setDateFilter] = useState('');
@@ -32,7 +32,7 @@ const index = () => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="All Applicants!" />
+          <BreadCrumb title="All Applicants" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -44,7 +44,7 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Applicants</h4>
+                    <h4>List of applicants</h4>
                     <WidgetTopFilterBox
                       dateFilter={dateFilter}
                       setDateFilter={setDateFilter}

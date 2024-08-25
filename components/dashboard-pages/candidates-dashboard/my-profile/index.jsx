@@ -1,18 +1,18 @@
-import MobileMenu from "../../../header/MobileMenu";
+import { useRedirect } from "../../../../hooks/useRedirect";
 import LoginPopup from "../../../common/form/login/LoginPopup";
+import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
+import CopyrightFooter from "../../CopyrightFooter";
+import MenuToggler from "../../MenuToggler";
+import ContactInfoBox from "./components/ContactInfoBox";
 import MyProfile from "./components/my-profile";
 import SocialNetworkBox from "./components/SocialNetworkBox";
-import ContactInfoBox from "./components/ContactInfoBox";
-import CopyrightFooter from "../../CopyrightFooter";
-import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
-import MenuToggler from "../../MenuToggler";
-import { useRedirect } from "../../../../hooks/useRedirect";
 
 const index = () => {
 
-  useRedirect('/candidate/my-resume');
+  useRedirect('/candidate/profile');
 
   return (
     <div className="page-wrapper dashboard">
@@ -44,9 +44,6 @@ const index = () => {
             <div className="col-lg-12">
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>My Profile</h4>
-                  </div>
                   <MyProfile />
                 </div>
               </div>

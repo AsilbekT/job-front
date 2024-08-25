@@ -53,7 +53,7 @@ const DefaulHeader = () => {
                   <Link href={
                     user?.is_employer
                       ? "/employer/company-profile"
-                      : '/candidate/my-profile'
+                      : '/candidate/profile'
                   }>
                     <img
                       alt="avatar"
@@ -70,7 +70,7 @@ const DefaulHeader = () => {
                       href="/employer/post-jobs"
                       className="theme-btn btn-style-one"
                     >
-                      Post Job
+                      Post a Job
                     </Link>
                   )}
                 </>

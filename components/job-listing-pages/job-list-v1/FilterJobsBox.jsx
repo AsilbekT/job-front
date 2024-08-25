@@ -44,7 +44,7 @@ const FilterJobsBox = () => {
 
     useEffect(() => {
         fetchFromApi('jobs/')  // replace 'your-endpoint' with the actual endpoint
-            .then((data) => setJobs(data))
+            .then((data) => setJobs(data instanceof Array ? data : []))
             .catch((error) => console.error('Error:', error));
     }, []);
 

@@ -28,7 +28,7 @@ const MobileMenu = () => {
 
           <div className="outer-box">
             {user ? (
-              <Link href={user?.is_employer ? '/employer/dashboard' : '/candidate/my-resume'}>
+              <Link href={user?.is_employer ? '/employer/dashboard' : '/candidate/profile'}>
                 {user?.is_employer ? "Dashboard" : 'My Profile'}
               </Link>
             ) : (

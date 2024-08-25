@@ -66,6 +66,12 @@ const Resumes = () => {
           body: formData
         }
       );
+
+      if (!response.ok) {
+        setError((await response.json())[0]);
+        return;
+      }
+
       const responseData = await response.json();
       dispatchRefetchUserEvent();
       setTitle('');

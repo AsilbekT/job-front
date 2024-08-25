@@ -1,12 +1,12 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import PostJobSteps from "./components/PostJobSteps";
-import PostBoxForm from "./components/PostBoxForm";
 import MenuToggler from "../../MenuToggler";
+import PostBoxForm from "./components/PostBoxForm";
+import PostJobSteps from "./components/PostJobSteps";
 
 const index = ({ job }) => {
   return (
@@ -29,7 +29,7 @@ const index = ({ job }) => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title={job ? `Edit the job (${job.job_title})` : 'Post a New Job!'} />
+          <BreadCrumb title={job ? `Edit the job (${job.job_title})` : 'Post a New Job'} />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -41,7 +41,7 @@ const index = ({ job }) => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>{job ? 'Edit Job' : 'Post Job'}</h4>
+                    <h4>{job ? 'Edit Job' : 'Post a Job'}</h4>
                   </div>
 
                   <div className="widget-content">

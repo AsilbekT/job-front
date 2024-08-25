@@ -16,7 +16,7 @@ export const isActiveParentChaild = (data = [], path) => {
     if (data?.length !== 0) {
         return data?.some(
             (menu) =>
-                menu.routePath.replace(/\/\d+/, "") ===
+                menu.routePath?.replace(/\/\d+/, "") ===
                 path.replace(/\/\d+/, "")
         );
     }

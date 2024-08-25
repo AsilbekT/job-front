@@ -35,7 +35,7 @@ const FormContent = () => {
         if (userData.is_employer) {
           window.location.href = "/employer/dashboard";
         } else {
-          window.location.href = "/candidate/my-profile";
+          window.location.href = "/candidate/profile";
         }
 
       } else {
@@ -96,22 +96,6 @@ const FormContent = () => {
             </button>
           </div>
         </div>
-        {/* password */}
-
-        <div className="form-group">
-          <div className="field-outer">
-            <div className="input-group checkboxes square">
-              <input type="checkbox" name="remember-me" id="remember" />
-              <label htmlFor="remember" className="remember">
-                <span className="custom-checkbox"></span> Remember me
-              </label>
-            </div>
-            <a href="#" className="pwd">
-              Forgot password?
-            </a>
-          </div>
-        </div>
-        {/* forgot password */}
 
         <div className="form-group">
           <button

@@ -1,13 +1,13 @@
-import MobileMenu from "../../../header/MobileMenu";
 import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
-import BreadCrumb from "../../BreadCrumb";
-import CopyrightFooter from "../../CopyrightFooter";
-import Form from "./components/Form";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
-import MenuToggler from "../../MenuToggler";
+import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
 import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
+import BreadCrumb from "../../BreadCrumb";
+import CopyrightFooter from "../../CopyrightFooter";
+import MenuToggler from "../../MenuToggler";
+import Form from "./components/Form";
 
 const index = ({ employer }) => {
   return (
@@ -37,9 +37,6 @@ const index = ({ employer }) => {
           {/* Collapsible sidebar button */}
 
           <div className="ls-widget">
-            <div className="widget-title">
-              <h4>Change Password</h4>
-            </div>
 
             <div className="widget-content">
               <Form />

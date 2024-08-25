@@ -17,9 +17,8 @@ const Header = () => {
 
   return (
     <header
-      className={`main-header ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+      className={`main-header ${navbar ? "fixed-header animated slideInDown" : ""
+        }`}
     >
       <div className="container-fluid">
         {/* <!-- Main box --> */}

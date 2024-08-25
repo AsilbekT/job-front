@@ -46,7 +46,7 @@ const LogoUpload = ({ title = 'Profile Image', }) => {
     return (
         <div className="uploading-outer">
             <label className="w-25">{title}</label>
-            <label className="uploadButton" tabIndex={0}>
+            <label className="uploadButton image" tabIndex={0}>
                 <figure className="image-overlay">
                     <img
                         src={imageUrl || user?.avatar}
@@ -63,6 +63,7 @@ const LogoUpload = ({ title = 'Profile Image', }) => {
                     onChange={logImgHander}
                 />
                 <span className="uploadButton-file-name"></span>
+                <span className="label">Upload new image</span>
             </label>
             <div className="text d-flex flex-column mx-3">
                 <label

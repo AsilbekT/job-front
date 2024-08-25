@@ -9,7 +9,7 @@ const FormContent = ({
   setValidationError,
   setSuccess
 }) => {
-  const [role, setRole] = useState(isApplication ? 'candidate' : 'employer');
+  const [role, setRole] = useState('');
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -96,6 +96,7 @@ const FormContent = ({
             className="form-select"
             onChange={(e) => setRole(e.target.value)}
           >
+            <option disabled value="" style={{ display: 'none' }}>Select role</option>
             <option value="candidate">Candidate</option>
             <option value="employer">Employer</option>
           </select>

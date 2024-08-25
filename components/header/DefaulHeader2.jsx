@@ -60,7 +60,7 @@ const DefaulHeader2 = () => {
 
         <div className="outer-box">
           {user && (
-            <Link href={user?.is_employer ? '/employer/dashboard' : "/candidate/my-resume"} className="my-profile">
+            <Link href={user?.is_employer ? '/employer/dashboard' : "/candidate/profile"} className="my-profile">
               <img
                 alt="avatar"
                 className="thumb"
@@ -72,16 +72,10 @@ const DefaulHeader2 = () => {
               <span className="name">My Account</span>
             </Link>
           )}
-          {user && user.is_employer ? (
+          {user && user.is_employer && (
             <Link href="/employer/post-jobs" className="theme-btn btn-style-one">
-              Post Job
+              Post a Job
             </Link>
-          ) : (
-            isLoggedIn && !user?.cv && (
-              <Link href="/candidate/cv-manager" className="upload-cv">
-                Upload your Resume
-              </Link>
-            )
           )}
 
           <div className="btn-box">

@@ -43,14 +43,13 @@ const JobSingleDynamicV3 = () => {
         `/companies/${jobFetch.data.company}/`,
         undefined,
         undefined,
-        true
       );
     }
   }, [jobFetch.data]);
 
   useEffect(() => {
     if (jobId) {
-      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined, true);
+      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined);
       categoryFetch.makeRequest('/catagories/', undefined, undefined, true);
     }
   }, [jobId]);
@@ -78,31 +77,19 @@ const JobSingleDynamicV3 = () => {
 
   const onApplyToJob = useCallback(async () => {
     try {
-      const userResumesCount = user?.resumes?.length;
       let userSelectedCvId = selectedCv;
-
-      if ((userResumesCount && !selectedCv) || (!userResumesCount && !selectedFileCv)) {
-        setValidationError('Please select or upload your resume first.');
-        return;
-      }
-
-      if (!userResumesCount && user) {
-        userSelectedCvId = await uploadResumeFile();
-        if (!userSelectedCvId) {
-          setValidationError('Something went wrong, please try again later.');
-          return;
-        }
-      }
 
       setLoading(true);
       setValidationError('');
       setSuccess(false);
       applicationsFetch.setError(null);
       const formData = new FormData();
-      formData.append(
-        user ? 'resume_id' : 'resume',
-        user ? userSelectedCvId : selectedFileCv
-      );
+      if (selectedFileCv) {
+        formData.append(
+          selectedFileCv ? 'resume' : 'resume_id',
+          user ? userSelectedCvId : selectedFileCv
+        );
+      }
       formData.append('job', jobFetch.data.id);
       const response = await applicationsFetch.makeRequest(
         '/applications/',
@@ -273,7 +260,7 @@ const JobSingleDynamicV3 = () => {
                         data-bs-toggle="modal"
                         data-bs-target="#applyJobModal"
                       >
-                        Apply
+                        {jobFetch.data?.is_applied_recently ? 'Apply again' : 'Apply'}
                       </a>
                       {/* <button className="bookmark-btn">
                         <i className="flaticon-bookmark"></i>

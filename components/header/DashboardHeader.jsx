@@ -31,7 +31,7 @@ const DashboardHeader = () => {
 
     const onLogOut = useCallback(async () => {
         Cookies.remove('token');
-        await router.replace('/login');
+        await router.replace('/');
         window.location.reload();
     }, [router]);
 
@@ -155,6 +155,9 @@ const DashboardHeader = () => {
                                     </li>
                                 </ul>
                             </div>
+                            <Link href="/employer/post-jobs" className="upload-cv">
+                                Post a new job
+                            </Link>
                             {/* End dropdown */}
                         </div>
                         {/* End outer-box */}

@@ -86,10 +86,6 @@ const PostBoxForm = ({ job }) => {
       e.preventDefault();
       setSavedJob(null);
       setFormError(null);
-      if (!skillsArr.length) {
-        setFormError('Missing skills, at least one skill is required');
-        return;
-      }
       setSuccess(false);
       e.preventDefault();
       const data = await formFetch.makeRequest(
@@ -137,7 +133,7 @@ const PostBoxForm = ({ job }) => {
     Promise.all([
       categoriesFetch.makeRequest('/catagories/')
         .then((response) => {
-          const [firstCategory] = response || [];
+          const [firstCategory] = Array.isArray(response) ? response : [];
           if (!firstCategory) return;
           onFormValueChange('category', firstCategory?.id)
         }),
@@ -427,7 +423,7 @@ const PostBoxForm = ({ job }) => {
           {/* <!-- Input --> */}
           <div className="form-group col-lg-12 col-md-12 text-right">
             <button type="submit" className="theme-btn btn-style-one">
-              {job ? 'Edit the job' : 'Post job'}
+              {job ? 'Edit the job' : 'Post a job'}
             </button>
           </div>
         </div>

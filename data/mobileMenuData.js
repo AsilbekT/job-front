@@ -12,7 +12,7 @@ export default [
   {
     id: 10,
     label: 'Profile',
-    items: (user) => {
+    items: (user, onLogout) => {
       if (!user) {
         return [
           {
@@ -51,11 +51,15 @@ export default [
             name: 'Change Password',
             routePath: '/candidate/change-password',
           },
+          {
+            name: 'Logout',
+            onClick: onLogout
+          },
         ]
         : [
           {
             name: 'My Profile',
-            routePath: '/candidate/my-resume',
+            routePath: '/candidate/profile',
           },
           {
             name: 'Applications Submitted',
@@ -68,6 +72,10 @@ export default [
           {
             name: 'Change Password',
             routePath: '/candidate/change-password',
+          },
+          {
+            name: 'Logout',
+            onClick: onLogout
           },
         ];
     },

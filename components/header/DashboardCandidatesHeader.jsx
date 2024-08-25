@@ -43,7 +43,7 @@ const DashboardCandidatesHeader = () => {
 
     const onLogOut = useCallback(async () => {
         Cookies.remove('token');
-        await router.replace('/login');
+        await router.replace('/');
         window.location.reload();
     }, [router]);
 

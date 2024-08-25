@@ -10,14 +10,14 @@ module.exports = [
   //   id: 2,
   //   name: "My Profile",
   //   icon: "la-user-tie",
-  //   routePath: "/candidate/my-profile",
+  //   routePath: "/candidate/profile",
   //   active: "",
   // },
   {
     id: 3,
     name: 'My Profile',
     icon: 'la la-file-invoice',
-    routePath: '/candidate/my-resume',
+    routePath: '/candidate/profile',
     active: '',
   },
   {
@@ -41,13 +41,6 @@ module.exports = [
   //   routePath: "/candidate/short-listed-jobs",
   //   active: "",
   // },
-  {
-    id: 7,
-    name: 'Resume Manager',
-    icon: 'la la-file-invoice',
-    routePath: '/candidate/resume-manager',
-    active: '',
-  },
   // {
   //   id: 8,
   //   name: "Packages",

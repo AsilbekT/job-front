@@ -40,7 +40,7 @@ const ApplyJobModalContent = ({
           {success ? (
             <>
               <h5 className="mb-4 success text-center d-block">
-                Job application has been created and Resume has been forwarded to the company owner!😊
+                Job application has been created and Resume has been forwarded to the hiring manager!
               </h5>
               <button
                 className="theme-btn btn-style-one w-100"

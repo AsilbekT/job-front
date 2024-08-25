@@ -1,4 +1,3 @@
-import Link from "next/link";
 import SearchForm from "../../common/job-search/SearchForm";
 import PopularSearch from "../PopularSearch";
 import ImageBox from "./ImageBox";
@@ -35,12 +34,6 @@ const index = () => {
                   <span className="title">10k+ Candidates</span>
                   <img src="images/resource/multi-peoples.png" alt="" />
                 </div>
-                <Link
-                  href="/candidate/cv-manager"
-                  className="upload-cv"
-                >
-                  <span className="icon flaticon-file"></span> Upload your Resume
-                </Link>
               </div>
             </div>
           </div>

@@ -1,15 +1,15 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
+import { useCallback, useContext, useEffect } from "react";
+import { useFetch } from "../../../../hooks/useFetch";
+import { UserContext } from "../../../../pages/context/UserContext";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
-import TopCardBlock from "./components/TopCardBlock";
-import Applicants from "./components/Applicants";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
-import { useFetch } from "../../../../hooks/useFetch";
-import { useCallback, useContext, useEffect } from "react";
-import { UserContext } from "../../../../pages/context/UserContext";
+import Applicants from "./components/Applicants";
+import TopCardBlock from "./components/TopCardBlock";
 
 const Index = () => {
   const applicationsFetch = useFetch();
@@ -30,7 +30,7 @@ const Index = () => {
 
   const onDeleteApplication = useCallback(async (application) => {
     await applicationsFetch.makeRequest(
-      `/applications/${application.id}/`, 
+      `/applications/${application.id}/`,
       { method: 'DELETE' },
       true
     );
@@ -59,7 +59,7 @@ const Index = () => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Dashboard Home!" />
+          <BreadCrumb title="Dashboard Home" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -103,7 +103,7 @@ const Index = () => {
                   <div className="row">
                     {/* <!-- Candidate block three --> */}
 
-                    <Applicants 
+                    <Applicants
                       applications={applicationsFetch.data || []}
                       onDeleteApplication={onDeleteApplication}
                       jobs={jobsFetch.data || []}

@@ -1,11 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import Form from "./components/Form";
 import MenuToggler from "../../MenuToggler";
+import Form from "./components/Form";
 
 const index = () => {
   return (
@@ -35,9 +35,6 @@ const index = () => {
           {/* Collapsible sidebar button */}
 
           <div className="ls-widget">
-            <div className="widget-title">
-              <h4>Change Password</h4>
-            </div>
 
             <div className="widget-content">
               <Form />

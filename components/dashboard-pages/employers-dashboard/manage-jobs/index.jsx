@@ -1,11 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardHeader from "../../../header/DashboardHeader";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import JobListingsTable from "./components/JobListingsTable";
 import MenuToggler from "../../MenuToggler";
+import JobListingsTable from "./components/JobListingsTable";
 
 const index = () => {
   return (
@@ -28,7 +28,7 @@ const index = () => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Manage jobs!" />
+          <BreadCrumb title="Manage jobs" />
           {/* breadCrumb */}
 
           <MenuToggler />

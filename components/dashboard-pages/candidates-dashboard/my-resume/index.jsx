@@ -1,11 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
 import LoginPopup from "../../../common/form/login/LoginPopup";
+import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
+import MobileMenu from "../../../header/MobileMenu";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import Resume from "./components";
-import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
+import Resume from "./components";
 
 const index = () => {
   return (
@@ -38,9 +38,6 @@ const index = () => {
             <div className="col-lg-12">
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>My Profile</h4>
-                  </div>
                   {/* End widget-title */}
 
                   <div className="widget-content">

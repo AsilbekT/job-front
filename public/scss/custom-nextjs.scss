@@ -186,7 +186,10 @@
     min-height: 120px;
     position: relative;
     border-radius: 50%;
-    overflow: hidden;
+
+    figure {
+        overflow: hidden;
+    }
 }
 
 .uploading-outer.apply-cv-outer {

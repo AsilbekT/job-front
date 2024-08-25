@@ -1,17 +1,15 @@
+import Cookies from "js-cookie";
 import Link from "next/link";
-import "react-circular-progressbar/dist/styles.css";
-import candidatesuData from "../../data/candidatesMenuData";
-import { isActiveLink } from "../../utils/linkActiveChecker";
 import { useRouter } from "next/router";
+import { useCallback, useContext, useEffect, useState } from "react";
+import "react-circular-progressbar/dist/styles.css";
 import { useDispatch, useSelector } from "react-redux";
+import candidatesuData from "../../data/candidatesMenuData";
 import { menuToggle } from "../../features/toggle/toggleSlice";
 import { useFetch } from "../../hooks/useFetch";
-import { useEffect, useState } from "react";
-import Modal from "../Modal";
-import { useCallback } from "react";
-import { useContext } from "react";
 import { UserContext } from "../../pages/context/UserContext";
-import Cookies from "js-cookie";
+import { isActiveLink } from "../../utils/linkActiveChecker";
+import Modal from "../Modal";
 
 const DashboardCandidatesSidebar = () => {
   const { menu } = useSelector((state) => state.toggle);
@@ -28,7 +26,7 @@ const DashboardCandidatesSidebar = () => {
 
   const onLogOut = useCallback(async () => {
     Cookies.remove('token');
-    await router.replace('/login');
+    await router.replace('/');
     window.location.reload();
   }, [router]);
 

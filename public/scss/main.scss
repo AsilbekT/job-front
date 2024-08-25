@@ -125,3 +125,31 @@ Global Settings
 @import './base/responsive.scss';
 @import './input-range-slider';
 @import './custom-nextjs.scss';
+
+.uploadButton.image {
+  border: 2px solid transparent;
+
+  .label {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(#000, .1);
+    padding: 10px 15px;
+    width: max-content;
+    display: flex;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  &:hover {
+    border-color: rgba(#000, .1);
+
+    .label {
+      opacity: 1;
+    }
+  }
+}

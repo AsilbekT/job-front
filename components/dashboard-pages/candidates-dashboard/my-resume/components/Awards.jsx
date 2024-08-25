@@ -50,7 +50,7 @@ const Awards = () => {
     <>
       {activeFieldEditing.activeField === FIELD_KEY && (
         <Modal
-          title="Add / Edit Awards"
+          title="Awards"
           onClose={closeEditing}
           primaryAction={saveFieldItem}
         >

@@ -1,4 +1,5 @@
 "use client";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import {
   Menu,
@@ -9,7 +10,7 @@ import {
 } from "react-pro-sidebar";
 
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import mobileMenuData from "../../../data/mobileMenuData";
 import { UserContext } from "../../../pages/context/UserContext";
 import {
@@ -22,6 +23,12 @@ import SidebarHeader from "./SidebarHeader";
 const Index = () => {
   const router = useRouter();
   const user = useContext(UserContext);
+
+  const onLogOut = useCallback(async () => {
+    Cookies.remove('token');
+    await router.replace('/');
+    window.location.reload();
+  }, [router]);
 
   return (
     <div
@@ -37,7 +44,7 @@ const Index = () => {
         <Sidebar>
           <Menu>
             {mobileMenuData.map((item) => {
-              const items = typeof item.items === 'function' ? item.items(user) : item.items;
+              const items = typeof item.items === 'function' ? item.items(user, onLogOut) : item.items;
               return (
                 <SubMenu
                   className={
@@ -48,7 +55,7 @@ const Index = () => {
                   label={item.label}
                   key={item.id}
                 >
-                  {items.map((menuItem, i) => (
+                  {items.map((menuItem, i) => menuItem.routePath ? (
                     <MenuItem
                       className={
                         isActiveLink(menuItem.routePath, router.asPath)
@@ -59,6 +66,13 @@ const Index = () => {
                       routerLink={<Link href={menuItem.routePath} />}
                     >
                       {menuItem.name}
+                    </MenuItem>
+                  ) : (
+                    <MenuItem
+                      className="menu-active-link"
+                      onClick={menuItem.onClick}
+                    >
+                      Logout
                     </MenuItem>
                   ))}
                 </SubMenu>

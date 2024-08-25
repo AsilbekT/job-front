@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import cookie from 'js-cookie';
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
-  candidateItems,
   employerItems,
-  findJobItems,
   pageItems,
-  shopItems,
+  shopItems
 } from "../../data/mainMenuData";
+import fetchFromApi from '../../pages/api/api';
 import {
-  isActiveParent,
   isActiveLink,
+  isActiveParent,
   isActiveParentChaild,
 } from "../../utils/linkActiveChecker";
-import { useRouter } from "next/router";
-import cookie from 'js-cookie';
-import fetchFromApi from '../../pages/api/api';
 
 const HeaderNavContent = () => {
   const router = useRouter();
@@ -47,7 +45,7 @@ const HeaderNavContent = () => {
           {/* current dropdown */}
 
           <li className={`${isActiveLink('/', router.asPath) ? "current" : ""}`}>
-            <Link href="/">Find Jobs</Link>
+            <Link href="/">{user?.is_employer ? 'Jobs' : 'Find Jobs'}</Link>
           </li>
 
           {/* End findjobs menu items */}
@@ -64,23 +62,6 @@ const HeaderNavContent = () => {
               </Link>
             </li>
           )}
-          {/* End Employers menu items */}
-          {user && !user.is_employer && (
-            <li
-              className={`${isActiveParent(candidateItems, router.asPath) ||
-                router.asPath === "/candidate/dashboard"
-                ? "current"
-                : ""
-                  ? "current"
-                  : ""
-                } dropdown`}
-            >
-              <Link href="/candidate/dashboard">
-                Candidates Dashboard
-              </Link>
-            </li>
-          )}
-          {/* End Candidates menu items */}
           <li
             className={`${isActiveParentChaild(pageItems, router.asPath) ||
               isActiveParentChaild(shopItems[0].items, router.asPath)
