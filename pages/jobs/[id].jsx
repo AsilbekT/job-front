@@ -43,13 +43,14 @@ const JobSingleDynamicV3 = () => {
         `/companies/${jobFetch.data.company}/`,
         undefined,
         undefined,
+        true
       );
     }
   }, [jobFetch.data]);
 
   useEffect(() => {
     if (jobId) {
-      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined);
+      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined, true);
       categoryFetch.makeRequest('/catagories/', undefined, undefined, true);
     }
   }, [jobId]);
