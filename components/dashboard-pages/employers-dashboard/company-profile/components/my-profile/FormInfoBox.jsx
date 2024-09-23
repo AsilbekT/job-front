@@ -116,7 +116,16 @@ const FormInfoBox = (props) => {
                             <label className="w-25">Company Logo</label>
                             <label className="uploadButton" tabIndex={0}>
                                 <figure className="image-overlay">
-                                    <img src={imageUrl || company?.company_logo} alt="User Avatart" width="100%" height="100%" />
+                                    <img
+                                        src={
+                                            imageUrl ||
+                                            company?.company_logo ||
+                                            process.env.NEXT_PUBLIC_DEFAULT_IMAGE
+                                        }
+                                        alt="User Avatart"
+                                        width="100%"
+                                        height="100%"
+                                    />
                                 </figure>
                                 <input
                                     className="uploadButton-input"

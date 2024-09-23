@@ -6,6 +6,7 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_API_URL: 'https://job-backend.prisunion.uz',
+    NEXT_PUBLIC_DEFAULT_IMAGE: 'https://job-backend.prisunion.uz/static/players_avatar/default.jpg',
   },
 };
 

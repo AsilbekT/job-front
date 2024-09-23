@@ -20,7 +20,6 @@ export const useFetch = (initiallyLoading = true) => {
         if (response.ok && !noStateSave) {
           setData(data);
         } else if (!response.ok) {
-          console.log({ errorResponse: data });
           data['error'] = true;
         }
 

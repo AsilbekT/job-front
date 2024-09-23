@@ -127,11 +127,9 @@ const CandidateSingleDynamicV1 = () => {
     );
   });
 
-  const skillEls = skillsFetch.data?.map(skill => {
-    return (
-      <li key={skill.id}>{skill.name}</li>
-    );
-  });
+  const skillEls = skillsFetch.data?.map(skill => (
+    <li key={skill.id}>{skill.name}</li>
+  ));
 
   const educationEls = educationFetch.data?.map(education => {
     return (

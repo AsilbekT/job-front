@@ -14,7 +14,7 @@ export const ProfileView = memo(({ form, companyLogo, company }) => {
                 <div className="uploadButton">
                   <figure className="image-overlay">
                     <img
-                      src={company?.company_logo}
+                      src={company?.company_logo || process.env.NEXT_PUBLIC_DEFAULT_IMAGE}
                       alt="User Avatart"
                       width="100%"
                       height="100%"

@@ -1,9 +1,8 @@
+import { useCallback, useContext } from "react";
 import Select from "react-select";
 import { useMyResumeContext } from "../../../../../contexts/MyResumeContext";
-import { useContext } from "react";
 import { UserContext } from "../../../../../pages/context/UserContext";
 import Modal from "../../../../Modal";
-import { useCallback } from "react";
 
 const FIELD_KEY = 'skill';
 
@@ -44,8 +43,8 @@ const SkillsMultiple = () => {
   return (
     <div>
       {activeFieldEditing.activeField === FIELD_KEY && (
-        <Modal 
-          title="Add Skill" 
+        <Modal
+          title="Add Skill"
           onClose={closeEditing}
           primaryAction={saveFieldItem}
         >
@@ -71,7 +70,6 @@ const SkillsMultiple = () => {
         options={skillOptions || []}
         className="basic-multi-select"
         classNamePrefix="select"
-        required
       />
       <button
         type="button"

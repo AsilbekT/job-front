@@ -4,6 +4,7 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { experienceLevels } from '../../../../../data/experienceLevels';
 import { jobTypes } from "../../../../../data/job-types";
 import { salaryRanges } from "../../../../../data/salary-range";
+import { USAStates } from '../../../../../data/state';
 import { useFetch } from "../../../../../hooks/useFetch";
 import { UserContext } from "../../../../../pages/context/UserContext";
 import Modal from "../../../../Modal";
@@ -25,6 +26,8 @@ const DEFAULT_JOB = {
   salaryMin: '',
   salaryMax: '',
 };
+
+const validateNumberInput = (value) => /^-?\d*\.?\d*$/.test(value);
 
 const getInitialJobData = (job) => {
   if (!job) return DEFAULT_JOB;
@@ -122,10 +125,10 @@ const PostBoxForm = ({ job }) => {
     }
   }, [form, user, skillsArr, job]);
 
-  const onFormValueChange = useCallback((key, value) => {
+  const onFormValueChange = useCallback((key, value, isNum) => {
     setForm(prev => ({
       ...prev,
-      [key]: value
+      [key]: isNum ? (validateNumberInput(value) ? value : prev[key]) : value
     }));
   }, []);
 
@@ -227,7 +230,9 @@ const PostBoxForm = ({ job }) => {
     );
   });
 
-  console.log({ form })
+  const stateOptions = USAStates.map(state => (
+    <option key={state} value={state}>{state}</option>
+  ));
 
   return (
     <>
@@ -281,8 +286,8 @@ const PostBoxForm = ({ job }) => {
             <label>Offered Salary ($)</label>
             <input
               value={form.salary}
-              onChange={(e) => onFormValueChange('salary', +e.target.value)}
-              type="number"
+              onChange={(e) => onFormValueChange('salary', e.target.value, true)}
+              type="text"
               min={0}
               placeholder="Enter amount"
               className="no-arrows-input"
@@ -293,8 +298,8 @@ const PostBoxForm = ({ job }) => {
             <label>Minimum Salary ($)</label>
             <input
               value={form.salaryMin.toString()}
-              onChange={(e) => onFormValueChange('salaryMin', +e.target.value)}
-              type="number"
+              onChange={(e) => onFormValueChange('salaryMin', e.target.value, true)}
+              type="text"
               min={0}
               placeholder="Enter minimum amount"
               className="no-arrows-input"
@@ -305,9 +310,8 @@ const PostBoxForm = ({ job }) => {
             <label>Maximum Salary ($)</label>
             <input
               value={form.salaryMax.toString()}
-              onChange={(e) => onFormValueChange('salaryMax', +e.target.value)}
-              type="number"
-              min={0}
+              onChange={(e) => onFormValueChange('salaryMax', e.target.value, true)}
+              type="text"
               placeholder="Enter maximum amount"
               className="no-arrows-input"
             />
@@ -358,12 +362,14 @@ const PostBoxForm = ({ job }) => {
 
           <div className="form-group col-lg-6 col-md-12">
             <label>State</label>
-            <input
+            <select
               value={form.state}
-              onChange={(e) => onFormValueChange('state', e.target.value)}
-              type="text"
               placeholder="State"
-            />
+              className="chosen-single form-select"
+              onChange={(e) => onFormValueChange('state', e.target.value)}
+            >
+              {stateOptions}
+            </select>
           </div>
 
           <div className="form-group col-lg-12 col-md-12">

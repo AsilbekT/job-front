@@ -3,6 +3,7 @@ export const defaultFieldValues = {
     degree: '',
     institution: '',
     start_year: '',
+    major: '',
     end_year: '',
     description: '',
   },

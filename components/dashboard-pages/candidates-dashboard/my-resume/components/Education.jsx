@@ -103,6 +103,17 @@ const Education = () => {
                 onChange={(e) => onChangeEditingStateValue('description', e.target.value)}
               />
             </div>
+            <div className="form-group col-lg-12 col-md-12">
+              <label>Major/Area of Study</label>
+              <input
+                type="text"
+                required
+                placeholder="major"
+                className="no-arrows-input"
+                value={activeFieldEditing.state.major}
+                onChange={(e) => onChangeEditingStateValue('major', e.target.value)}
+              />
+            </div>
           </div>
         </Modal>
       )}

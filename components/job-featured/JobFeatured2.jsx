@@ -13,7 +13,7 @@ const JobFeatured2 = () => {
           <div className="inner-box">
             <div className="content">
               <span className="company-logo">
-                <img src={item.logo} alt="item brand" />
+                <img src={item.logo || process.env.NEXT_PUBLIC_DEFAULT_IMAGE} alt="item brand" />
               </span>
               <h4>
                 <Link href={`/job-single-v1/${item.id}`}>{item.job_title}</Link>

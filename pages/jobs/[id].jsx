@@ -225,7 +225,7 @@ const JobSingleDynamicV3 = () => {
                       <div className="company-title">
                         <div className="company-logo">
                           <img
-                            src={companyFetch.data?.company_logo}
+                            src={companyFetch.data?.company_logo || process.env.NEXT_PUBLIC_DEFAULT_IMAGE}
                             alt="resource"
                           />
                         </div>
