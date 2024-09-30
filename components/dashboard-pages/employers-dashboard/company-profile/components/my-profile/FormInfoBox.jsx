@@ -56,7 +56,7 @@ const FormInfoBox = (props) => {
         const formCopy = {
             ...form,
             owner: user.id,
-            website: form.website.includes('http') ? form.website : `https://${form.website}`
+            website: form.website?.includes('http') ? form.website : `https://${form.website}`
         };
         if (formCopy.company_logo) {
             delete formCopy['company_logo'];
@@ -190,7 +190,7 @@ const FormInfoBox = (props) => {
                             name="name"
                             placeholder="e.g. https://invision.com"
                             required
-                            value={form.website.includes('http') ? form.website : `https://${form.website}`}
+                            value={form.website?.includes('http') ? form.website : `https://${form.website}`}
                             onChange={(e) => onChangeForm('website', e.target.value)}
                         />
                     </div>

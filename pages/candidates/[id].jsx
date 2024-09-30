@@ -180,7 +180,7 @@ const CandidateSingleDynamicV1 = () => {
                 <div className="content">
                   <figure className="image">
                     <img
-                      src={user?.avatar}
+                      src={user?.avatar || process.env.NEXT_PUBLIC_DEFAULT_IMAGE}
                       alt="avatar"
                       style={{ objectFit: 'cover', height: '100%' }}
                     />

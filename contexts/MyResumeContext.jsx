@@ -25,9 +25,8 @@ export const MyResumeContextProvider = ({ children }) => {
     state: null
   });
 
-  const [editedFieldsRecord, setEditedFieldsRecord] = useState(fieldsListRecord);
-  const [removalRecord, setRemovalRecord] = useState(fieldsListRecord);
-  const [addedFieldsRecord, setAddedFieldsRecord] = useState(fieldsListRecord);
+  const [, setEditedFieldsRecord] = useState(fieldsListRecord);
+  const [, setAddedFieldsRecord] = useState(fieldsListRecord);
 
   const closeEditing = useCallback(() => {
     setActiveFieldEditing({
@@ -46,7 +45,7 @@ export const MyResumeContextProvider = ({ children }) => {
     }));
   }, []);
 
-  const saveFieldItem = useCallback(() => {
+  const saveFieldItem = useCallback(async () => {
     const { activeField, state } = activeFieldEditing;
 
     if (typeof state.id === 'number') {
@@ -54,11 +53,13 @@ export const MyResumeContextProvider = ({ children }) => {
         ...prev,
         [activeField]: [...prev[activeField], { ...state }]
       }));
+      await batchFetchUpdate({ [activeField]: [state] }, { method: 'PATCH' });
     } else if (typeof state.id === 'string') {
       setAddedFieldsRecord(prev => ({
         ...prev,
         [activeField]: [...prev[activeField], { ...state }]
       }));
+      await batchFetchUpdate({ [activeField]: [state] }, { method: 'POST' }, false);
     }
 
     fetchStates[activeField].setData(prevData => {
@@ -72,9 +73,7 @@ export const MyResumeContextProvider = ({ children }) => {
         delete newDataCopy['id'];
         return deepEqual(fieldDataCopy, newDataCopy);
       });
-      if (duplicateData) {
-        return prevData;
-      }
+      if (duplicateData) return prevData;
       const matchingDataIndex = prevData.findIndex(fieldData => {
         return state.id === fieldData.id
       });
@@ -128,33 +127,18 @@ export const MyResumeContextProvider = ({ children }) => {
         return Promise.all(updatePromises);
       });
       return Promise.all(promises);
-    }, [removalRecord]
+    },
+    []
   );
 
-  const saveFieldsToDb = useCallback(async () => {
-    setLoading(true);
-    await Promise.all([
-      batchFetchUpdate(removalRecord, { method: 'DELETE' }),
-      batchFetchUpdate(editedFieldsRecord, { method: 'PATCH' }),
-      batchFetchUpdate(addedFieldsRecord, { method: 'POST' }, false),
-    ]);
-    setLoading(false);
-  }, [batchFetchUpdate, removalRecord, addedFieldsRecord, editedFieldsRecord]);
-
-  const removeFieldItem = useCallback((field, item) => {
+  const removeFieldItem = useCallback(async (field, item) => {
     if (!(field in fetchStates)) return;
 
     fetchStates[field].setData(prev => prev && (
       prev.filter(fieldData => fieldData.id !== item.id)
     ));
-
-    setRemovalRecord(prev => {
-      return {
-        ...prev,
-        [field]: [...prev[field], item]
-      };
-    });
-  }, []);
+    await batchFetchUpdate({ [field]: [item] }, { method: 'DELETE' });
+  }, [batchFetchUpdate]);
 
   const filteredFetch = useCallback(async (fetch, url) => {
     let fetchedData = await fetch.makeRequest(url, undefined, true);
@@ -183,14 +167,12 @@ export const MyResumeContextProvider = ({ children }) => {
 
   const state = {
     fetchStates,
-    removalRecord,
     activeFieldEditing,
     removeFieldItem,
     addOrEditFieldItem,
     saveFieldItem,
     closeEditing,
     onChangeEditingStateValue,
-    saveFieldsToDb,
     loading,
     setLoading,
   };

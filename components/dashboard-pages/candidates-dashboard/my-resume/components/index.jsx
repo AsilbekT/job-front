@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { useMyResumeContext } from "../../../../../contexts/MyResumeContext";
 import LogoUpload from "../../my-profile/components/my-profile/LogoUpload";
 import Awards from "./Awards";
@@ -8,19 +7,14 @@ import Resumes from "./Resumes";
 import SkillsMultiple from "./SkillsMultiple";
 
 const index = () => {
-  const { saveFieldsToDb, loading } = useMyResumeContext();
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    saveFieldsToDb();
-  }, [saveFieldsToDb]);
+  const { loading } = useMyResumeContext();
 
   if (loading) {
     return <div>Loading...</div>
   }
 
   return (
-    <form className="default-form" onSubmit={handleSubmit}>
+    <div className="default-form">
       <div className="row">
         <LogoUpload />
         {/* <div className="form-group col-lg-6 col-md-12">
@@ -95,7 +89,7 @@ const index = () => {
         {/* <!-- Input --> */}
       </div>
       {/* End .row */}
-    </form>
+    </div>
   );
 };
 

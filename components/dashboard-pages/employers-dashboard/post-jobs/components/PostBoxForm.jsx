@@ -20,7 +20,7 @@ const DEFAULT_JOB = {
   description: '',
   job_type: 'FT',
   required_skills: '',
-  salary_range: 'monthly',
+  salary_range: '',
   city: '',
   state: '',
   salaryMin: '',
@@ -65,9 +65,7 @@ const PostBoxForm = ({ job }) => {
   const [form, setForm] = useState(getInitialJobData(job));
 
   useEffect(() => {
-    if (job) {
-      setForm(getInitialJobData(job));
-    }
+    if (job) setForm(getInitialJobData(job));
   }, [job]);
 
   const tagsArr = form.tag.split(',').filter(Boolean);
@@ -170,29 +168,23 @@ const PostBoxForm = ({ job }) => {
     onFormValueChange('required_skills', newSkillsList.join(','));
   }, [skillsArr]);
 
-  const categoryOptions = categoriesFetch.data?.map(category => {
-    return (
-      <option key={category.id} value={category.id}>
-        {category.title}
-      </option>
-    );
-  });
+  const categoryOptions = categoriesFetch.data?.map(category => (
+    <option key={category.id} value={category.id}>
+      {category.title}
+    </option>
+  ));
 
-  const salaryRangeOptions = salaryRanges.map((range, index) => {
-    return (
-      <option value={range.value} key={index}>
-        {range.label}
-      </option>
-    )
-  });
+  const salaryRangeOptions = salaryRanges.map((range, index) => (
+    <option value={range.value} key={index}>
+      {range.label}
+    </option>
+  ));
 
-  const jobTypeOptions = jobTypes.map(type => {
-    return (
-      <option key={type.value} value={type.value}>
-        {type.label}
-      </option>
-    );
-  });
+  const jobTypeOptions = jobTypes.map(type => (
+    <option key={type.value} value={type.value}>
+      {type.label}
+    </option>
+  ));
 
   const skillEls = useMemo(() =>
     skillsArr.map((skill, index) => (
@@ -219,8 +211,9 @@ const PostBoxForm = ({ job }) => {
         {tag}
         <VscChromeClose />
       </button>
-    )
-    ), [tagsArr]);
+    )),
+    [tagsArr]
+  );
 
   const experienceLevelOptions = Object.keys(experienceLevels).map(level => {
     return (
@@ -281,42 +274,6 @@ const PostBoxForm = ({ job }) => {
             </select>
           </div>
 
-          {/* <!-- Input --> */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>Offered Salary ($)</label>
-            <input
-              value={form.salary}
-              onChange={(e) => onFormValueChange('salary', e.target.value, true)}
-              type="text"
-              min={0}
-              placeholder="Enter amount"
-              className="no-arrows-input"
-            />
-          </div>
-
-          <div className="form-group col-lg-6 col-md-12">
-            <label>Minimum Salary ($)</label>
-            <input
-              value={form.salaryMin.toString()}
-              onChange={(e) => onFormValueChange('salaryMin', e.target.value, true)}
-              type="text"
-              min={0}
-              placeholder="Enter minimum amount"
-              className="no-arrows-input"
-            />
-          </div>
-
-          <div className="form-group col-lg-6 col-md-12">
-            <label>Maximum Salary ($)</label>
-            <input
-              value={form.salaryMax.toString()}
-              onChange={(e) => onFormValueChange('salaryMax', e.target.value, true)}
-              type="text"
-              placeholder="Enter maximum amount"
-              className="no-arrows-input"
-            />
-          </div>
-
           <div className="form-group col-lg-6 col-md-12">
             <label>Salary Type</label>
             <select
@@ -324,9 +281,48 @@ const PostBoxForm = ({ job }) => {
               onChange={(e) => onFormValueChange('salary_range', e.target.value)}
               value={form.salary_range}
             >
+              <option disabled value="" style={{ display: 'none' }}>Select salary</option>
               {salaryRangeOptions}
             </select>
           </div>
+
+          {form.salary_range && (
+            <>
+              <div className="form-group col-lg-6 col-md-12">
+                <label>Offered Salary ($)</label>
+                <input
+                  value={form.salary}
+                  onChange={(e) => onFormValueChange('salary', e.target.value, true)}
+                  type="text"
+                  min={0}
+                  placeholder="Enter amount"
+                  className="no-arrows-input"
+                />
+              </div>
+              <div className="form-group col-lg-6 col-md-12">
+                <label>Minimum Salary ($)</label>
+                <input
+                  value={form.salaryMin.toString()}
+                  onChange={(e) => onFormValueChange('salaryMin', e.target.value, true)}
+                  type="text"
+                  min={0}
+                  placeholder="Enter minimum amount"
+                  className="no-arrows-input"
+                />
+              </div>
+
+              <div className="form-group col-lg-6 col-md-12">
+                <label>Maximum Salary ($)</label>
+                <input
+                  value={form.salaryMax.toString()}
+                  onChange={(e) => onFormValueChange('salaryMax', e.target.value, true)}
+                  type="text"
+                  placeholder="Enter maximum amount"
+                  className="no-arrows-input"
+                />
+              </div>
+            </>
+          )}
 
           <div className="form-group col-lg-6 col-md-12">
             <label>Experience</label>
@@ -350,13 +346,13 @@ const PostBoxForm = ({ job }) => {
             </select>
           </div>
 
-          <div className="form-group col-lg-6 col-md-12">
-            <label>City</label>
-            <input
-              value={form.city}
-              onChange={(e) => onFormValueChange('city', e.target.value)}
+          <div className="form-group col-lg-12 col-md-12">
+            <label>Job Description</label>
+            <textarea
+              value={form.description}
+              onChange={(e) => onFormValueChange('description', e.target.value)}
               type="text"
-              placeholder="City"
+              placeholder="Description"
             />
           </div>
 
@@ -368,19 +364,22 @@ const PostBoxForm = ({ job }) => {
               className="chosen-single form-select"
               onChange={(e) => onFormValueChange('state', e.target.value)}
             >
+              <option disabled value="" style={{ display: 'none' }}>Select salary</option>
               {stateOptions}
             </select>
           </div>
 
-          <div className="form-group col-lg-12 col-md-12">
-            <label>Job Description</label>
-            <textarea
-              value={form.description}
-              onChange={(e) => onFormValueChange('description', e.target.value)}
-              type="text"
-              placeholder="Description"
-            />
-          </div>
+          {form.state && (
+            <div className="form-group col-lg-6 col-md-12">
+              <label>City</label>
+              <input
+                value={form.city}
+                onChange={(e) => onFormValueChange('city', e.target.value)}
+                type="text"
+                placeholder="City"
+              />
+            </div>
+          )}
 
           <div className="form-group col-lg-12 col-md-12">
             <label>Required skills</label>

@@ -17,7 +17,7 @@ const FormContent = ({
   const [showPassword, setShowPassword] = useState(false);
 
   let is_employer = false;
-  let path = "/candidate/dashboard";
+  let path = "/candidate/profile";
 
   const setValidationErrorMsg = useCallback((errorMsg) => {
     if (typeof setValidationError === 'function') {

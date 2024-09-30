@@ -50,10 +50,10 @@ const JobSingleDynamicV3 = () => {
 
   useEffect(() => {
     if (jobId) {
-      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined, true);
+      jobFetch.makeRequest(`/jobs/${jobId}/`, undefined, undefined, !user);
       categoryFetch.makeRequest('/catagories/', undefined, undefined, true);
     }
-  }, [jobId]);
+  }, [jobId, user]);
 
   const uploadResumeFile = useCallback(async () => {
     try {
@@ -64,7 +64,7 @@ const JobSingleDynamicV3 = () => {
       formData.append('title', selectedFileCv.name);
       formData.append('resume', selectedFileCv);
 
-      const response = await fetchWithAuth('/resumes/', {
+      const response = await (user ? fetchWithAuth : fetch)('/resumes/', {
         method: 'POST',
         body: formData
       });

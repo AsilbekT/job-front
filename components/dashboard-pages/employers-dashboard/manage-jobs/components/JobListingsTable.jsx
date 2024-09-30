@@ -61,7 +61,7 @@ const JobListingsTable = () => {
             <div className="inner-box">
               <div className="content">
                 <span className="company-logo">
-                  <img src={job.logo} alt="logo" />
+                  <img src={job.logo || process.env.NEXT_PUBLIC_DEFAULT_IMAGE} alt="logo" />
                 </span>
                 <h4>
                   <Link href={`/jobs/${job.id}`}>
