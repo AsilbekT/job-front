@@ -66,7 +66,7 @@ const JobListingsTable = () => {
     setFilteredApplications(prev => {
       return prev.filter(({ date_applied }) => (
         dayjs(date_applied).isAfter(dayjs().subtract(filterValue, 'months')
-        )))
+      )));
     });
   }, []);
 
@@ -75,7 +75,6 @@ const JobListingsTable = () => {
   }, [router]);
 
   const jobTableItemEls = filteredApplications.map(application => {
-
     return (
       <tr key={application.id}>
         <td>
@@ -87,7 +86,7 @@ const JobListingsTable = () => {
                   <img src={application.jobData?.logo} alt="logo" />
                 </span>
                 <h4>
-                  <Link href={`/jobs/${application.job}`}>
+                  <Link href={`/jobs/${application.jobData.id}`}>
                     {application.jobData?.job_title}
                   </Link>
                 </h4>
